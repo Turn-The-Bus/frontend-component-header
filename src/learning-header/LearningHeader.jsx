@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
@@ -29,6 +29,20 @@ const LearningHeader = ({
   courseOrg, courseNumber, courseTitle, intl, showUserDropdown,
 }) => {
   const { authenticatedUser } = useContext(AppContext);
+
+  // mcdaniel: add the custom js push notification hook to the script section of the DOM
+  useEffect(() => {
+    // mount
+    const script = document.createElement('script');
+    script.src = 'https://ttb-mumbai-prod-storage.s3.ap-south-1.amazonaws.com/static/js/push-notifications.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    // unmount
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
 
   const headerLogo = (
     <LinkedLogo

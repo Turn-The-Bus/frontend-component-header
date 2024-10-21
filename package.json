@@ -1,7 +1,7 @@
 {
-  "name": "@edx/frontend-component-header",
-  "version": "1.0.0-semantically-released",
-  "description": "The standard header for Open edX",
+  "name": "@turn-the-bus/frontend-component-header",
+  "version": "1.0.1",
+  "description": "The Turn The Bus header for Open edX forked from @edly-io",
   "main": "dist/index.js",
   "publishConfig": {
     "access": "public"
